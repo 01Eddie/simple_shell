@@ -10,6 +10,8 @@ int main(void)
 	int status = 0;
 	char *line = NULL, **args = NULL;
 
+	signal(SIGINT, ctrlC);
+
 	while (1)
 	{
 		write(STDOUT_FILENO, "$ ", 2);
