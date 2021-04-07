@@ -73,3 +73,32 @@ char *_strcpy(char *dest, char *src)
 	return (dest);
 }
 
+/**
+ * _strcat - function that concatenates two strings
+ * @str1: first string
+ * @str2: second string to be concatenated
+ *
+ * Return: pointer to the concatenated string
+ */
+char *_strcat(char *str1, char *str2)
+{
+	char *string;
+	int len1 = _strlen(str1), len2 = _strlen(str2), i, j;
+
+	string = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (string == NULL)
+	{
+		perror("Error: impossible to allocate memory");
+		exit(98);
+	}
+	for (i = 0; str1[i] != '\0'; i++)
+	{
+		string[i] = str1[i];
+	}
+	for (j = 0; str2[j] != '\0'; j++)
+	{
+		string[i + j] = str2[j];
+	}
+	string[i + j] = '\0';
+	return (string);
+}
