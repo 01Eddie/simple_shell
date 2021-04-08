@@ -83,14 +83,21 @@ int pr_launch(char **args)
 /**
  * pr_exec - execute the arguments
  * @args: pointer to the array of arguments
+ * @builtin: struc of builtin funcs
  *
  * Return: 1 success
  */
-int pr_exec(char **args)
+int pr_exec(char **args, builtins_t *builtin)
 {
+	int i;
+
 	if (args[0] == NULL)
 		return (0);
 
-/* here - code for builtins*/
+	for (i = 0; i < 1; i++)
+	{
+		if (_strcmp(args[0], builtin[i].command) == 0)
+			return (builtin[i].func(args));
+	}
 	return (pr_launch(args));
 }

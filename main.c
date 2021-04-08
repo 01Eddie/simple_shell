@@ -10,6 +10,11 @@ int main(void)
 	int status = 0;
 	char *line = NULL, **args = NULL;
 
+	builtins_t builtin[] = {
+		{"exit", new_exit},
+		{NULL, NULL}
+	};
+
 	signal(SIGINT, ctrlC);
 
 	while (1)
@@ -18,7 +23,7 @@ int main(void)
 
 		line = read_line();
 		args = split_line(line, " \t\r\n\a");
-		status = pr_exec(args);
+		status = pr_exec(args, builtin);
 
 		free(args);
 		free(line);
