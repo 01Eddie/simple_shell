@@ -33,6 +33,7 @@ char *_strcpy(char *dest, char *src);
 int _strcmp(const char *dest, const char *src);
 char *_strdup(char *s);
 char *_strcat(char *str1, char *str2);
+char *_memset(char *s, char b, unsigned int n);
 
 char **split_line(char *line, char *delim);
 char **re_alloc(char **ptr, int *size);
@@ -40,5 +41,8 @@ int pr_exec(char **args, builtins_t *builtin);
 char *_getenv(char *name);
 char *read_line(void);
 void ctrlC(int sig_num);
+char *_strtok(char *str, char *delim);
+int *create_delim_dict(char *delim);
+
 
 #endif
