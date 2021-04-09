@@ -14,7 +14,7 @@ char *read_line(void)
 	{
 		write(STDOUT_FILENO, "\n", 1);
 		free(line);
-		exit(1);
+		exit(127);
 	}
 	return (line);
 }

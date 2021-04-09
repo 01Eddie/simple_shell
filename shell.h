@@ -2,6 +2,7 @@
 #define SHELL_H
 
 extern char **environ;
+extern char *program_invocation_name;
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,6 +36,11 @@ char *_strdup(char *s);
 char *_strcat(char *str1, char *str2);
 char *_memset(char *s, char b, unsigned int n);
 
+/*Print functions*/
+void printint(int n);
+void _puts(char *s);
+int _putchar(const char c);
+
 char **split_line(char *line, char *delim);
 char **re_alloc(char **ptr, int *size);
 int pr_exec(char **args, builtins_t *builtin);
@@ -43,6 +49,7 @@ char *read_line(void);
 void ctrlC(int sig_num);
 char *_strtok(char *str, char *delim);
 int *create_delim_dict(char *delim);
-
+void format_error(int *status, int count_err, char **args);
+void no_inter(builtins_t *builtin);
 
 #endif
