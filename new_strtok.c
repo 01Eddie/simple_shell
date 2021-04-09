@@ -8,11 +8,10 @@
 */
 int *create_delim_dict(char *delim)
 {
-	int *d;
+	int *d, i;
 
 	d = (int *) malloc(sizeof(int) * DICT_LEN);
 	_memset((void *)d, 0, sizeof(int) * DICT_LEN);
-	int i;
 
 	for (i = 0; i < _strlen(delim); i++)
 		d[delim[i]] = 1;
