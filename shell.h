@@ -41,6 +41,7 @@ void printint(int n);
 void _puts(char *s);
 int _putchar(const char c);
 
+char *_strcat2(char *dest, char *src);
 char **split_line(char *line, char *delim);
 char **re_alloc(char **ptr, int *size);
 int pr_exec(char **args, builtins_t *builtin);
@@ -51,5 +52,6 @@ char *_strtok(char *str, char *delim);
 int *create_delim_dict(char *delim);
 void format_error(int *status, int count_err, char **args);
 void no_inter(builtins_t *builtin);
+ssize_t _getline(char **line, size_t *len, FILE *fp);
 
 #endif
