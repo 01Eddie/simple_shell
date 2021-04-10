@@ -1,4 +1,6 @@
 #include "shell.h"
+#include <unistd.h>
+
 
 /**
  * ctrlC - function of detected ctrl + c or ANSI C signal handling
@@ -8,6 +10,7 @@
  */
 void ctrlC(int sig_num)
 {
-	signal(sig_num, SIG_IGN);
+	_putchar('\n');
+	write(STDOUT_FILENO, "$ ", 2);
 	fflush(stdout);
 }
