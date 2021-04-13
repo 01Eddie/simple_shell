@@ -10,6 +10,8 @@
  */
 void ctrlC(int sig_num)
 {
+	(void) sig_num;
+
 	_putchar('\n');
 	write(STDOUT_FILENO, "$ ", 2);
 	fflush(stdout);
