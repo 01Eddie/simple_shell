@@ -2,7 +2,7 @@
 
 /**
  * no_inter - function execute shell in non-interactive way
- * @builtin - array of structures of built-ins
+ * @builtin: array of structures of built-ins
  *
  * Return: void
  */

@@ -12,6 +12,9 @@ extern char *program_invocation_name;
 #include <sys/stat.h>
 #include <sys/wait.h>
 
+
+#include <errno.h>
+
 /* Structs */
 /**
  * struct builtins - struct to handle the built-ins commands
