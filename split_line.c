@@ -22,7 +22,7 @@ char **split_line(char *line, char *delim)
 		perror("Fatal Error");
 		return (NULL);
 	}
-	while ((tokens[i] = strtok(line, delim)) != NULL)
+	while ((tokens[i] = _strtok(line, delim)) != NULL)
 	{
 		i++;
 		if (i == n_tokens)
