@@ -14,3 +14,22 @@ int new_exit(char **args)
 	free(args);
 	exit(status);
 }
+
+/**
+ * _printenv - print the environment
+ * @args: pointer to pointer to arguments
+ *
+ * Return: 0 success
+ */
+int _printenv(char **args)
+{
+	int i;
+	(void) args;
+
+	for (i = 0; environ[i] != '\0'; i++)
+	{
+		_puts(environ[i]);
+		_puts("\n");
+	}
+	return (0);
+}
