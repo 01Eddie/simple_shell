@@ -2,69 +2,83 @@
 #define DICT_LEN 256
 
 /**
- * *create_delim_dict - function that create delimiter to tokenize again
- * @delim: pointer character
- * Return: d
-*/
-int *create_delim_dict(char *delim)
+ * strloc - locates a char ins string
+ * @str: string
+ * @ch: character to be located
+ *
+ * Return: pointer to the first ocurrence
+ */
+char *strloc(char *str, char ch)
 {
-	int *d, i;
+	while (*str != 0)
+	{
+		if (*str == ch)
+			return (str);
+		str++;
+	}
+	if (*str == ch)
+		return (str);
+	return (0);
+}
 
-	d = (int *) malloc(sizeof(int) * DICT_LEN);
-	_memset((void *)d, 0, sizeof(int) * DICT_LEN);
+/**
+ * prefix_len - calculate the lenght of word before a delimit
+ * @str: string
+ * @delim: delim string
+ *
+ * Return: length of the string before a delimit
+ */
+int prefix_len(char *str, char *delim)
+{
+	int i, len = 0;
 
-	for (i = 0; i < _strlen(delim); i++)
-		d[delim[i]] = 1;
+	while (str[len] != 0)
+	{
+		int flag = 0;
 
-	return (d);
+		for (i = 0; delim[i] != 0; i++)
+		{
+			if (str[len] == delim[i])
+			{
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 0)
+			len++;
+		else
+			break;
+	}
+	return (len);
 }
 
 /**
  * *_strtok- function that extract tokens from strings
- * @str: character
- * @delim: character
- * Return: NULL or str
-*/
+ * @str: string to be tokenized
+ * @delim: delimeters character
+ *
+ * Return: pointer to each token or 0
+ */
 char *_strtok(char *str, char *delim)
 {
-	static char *last, *to_free;
-	int *deli_dict = create_delim_dict(delim);
+	static char *tmp;
+	int ch;
 
-	if (!deli_dict)
+	if (!str)
+		str = tmp;
+	ch = *str++;
+	while (strloc(delim, ch))
 	{
-		if (to_free)
-			free(to_free);
-
-		return (NULL);
+		if (ch == 0)
+			return (0);
+		ch = *str++;
 	}
-
-	if (str)
+	--str;
+	tmp = str + prefix_len(str, delim);
+	if (*tmp != 0)
 	{
-		last = (char *)malloc(_strlen(str) + 1);
-		if (!last)
-		{
-			free(deli_dict);
-			return (NULL);
-		}
-		to_free = last;
-		_strcpy(last, str);
+		*tmp = 0;
+		tmp++;
 	}
-
-	while (deli_dict[*last] && *last != '\0')
-		last++;
-
-	str = last;
-	if (*last == '\0')
-	{
-		free(deli_dict), free(to_free);
-		deli_dict = NULL, to_free = NULL;
-		return (NULL);
-	}
-	while (*last != '\0' && !deli_dict[*last])
-		last++;
-
-	*last = '\0', last++;
-
-	free(deli_dict);
 	return (str);
 }

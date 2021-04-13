@@ -10,12 +10,13 @@
  */
 ssize_t _getline(char **line, size_t *len, FILE *fp)
 {
+	char chunk[128];
+
 	if (line == NULL || len == NULL || fp == NULL)
 	{
 		perror("Error: Bad arguments or Pointers files bad. \n");
 		return (-1);
 	}
-	char chunk[128];
 
 	if (*line == NULL)
 	{
@@ -50,4 +51,3 @@ ssize_t _getline(char **line, size_t *len, FILE *fp)
 	}
 	return (-1);
 }
-
