@@ -8,7 +8,21 @@
  */
 int new_exit(char **args)
 {
-	int status = 0;
+	int status = 0, i;
+
+	if (args[1] == NULL)
+	{
+		free(args[0]);
+		free(args);
+		exit(status);
+	}
+
+	for (i = 0; args[1][i] != '\0'; i++)
+	{
+		if (args[1][i] < 48 || args[1][i] > 57)
+			return (3);
+	}
+	status = _atoi(args[1]);
 
 	free(args[0]);
 	free(args);

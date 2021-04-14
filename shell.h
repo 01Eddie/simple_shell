@@ -35,6 +35,7 @@ int _strcmp(const char *dest, const char *src);
 char *_strdup(char *s);
 char *_strcat(char *str1, char *str2);
 char *_memset(char *s, char b, unsigned int n);
+int _atoi(char *s);
 
 /*Print functions*/
 void printint(int n);
