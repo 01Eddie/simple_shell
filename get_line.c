@@ -1,53 +1,115 @@
-#include <stdint.h>
 #include "shell.h"
 
 /**
- * _getline - function that get lines
- * @line: double Character
- * @len: size_t
- * @fp: FILE
- * Return: -1 or _strlen(*line)
+ * fill_null - fill with null bytes a memory
+ * @buff: pointer to the memory
+ * @size: size of teh memory
+ *
+ * Return: pointer to the memory filled with null bytes
  */
-ssize_t _getline(char **line, size_t *len, FILE *fp)
+
+char *fill_null(char *buff, int size)
 {
-	char chunk[128];
+	int i;
 
-	if (line == NULL || len == NULL || fp == NULL)
+	if (!buff)
+		return (NULL);
+
+	for (i = 0; i < size; i++)
+		buff[i] = '\0';
+
+	return (buff);
+}
+
+/**
+ * _realloc - reallocate memory whith 3 args
+ * @old_buff: pointer to the old block of memory
+ * @old_size: size of the old block of memory
+ * @new_size: size the new block of memory should be
+ *
+ * Return: New pointer to new block of memory if new_size differs from old_size
+ */
+
+void *_realloc(void *old_buff, unsigned int old_size, unsigned int new_size)
+{
+	unsigned int i;
+	char *new_buff, *ch_oldbuff;
+
+	if (new_size == old_size)
+		return (old_buff);
+
+	if (!new_size && old_buff)
 	{
-		perror("Error: Bad arguments or Pointers files bad. \n");
-		return (-1);
+		free(old_buff);
+		return (NULL);
 	}
 
-	if (*line == NULL)
+	/* Set new char pointer to the same element as ptr */
+	ch_oldbuff = (char *) old_buff;
+
+	new_buff = malloc(new_size);
+	if (!new_buff)
+		return (NULL);
+
+	if (!old_buff)
+		return (new_buff);
+
+	fill_null(new_buff, new_size);
+
+	for (i = 0; (i < old_size) && (i < new_size); i++)
 	{
-		*len = sizeof(chunk);
-		*line = malloc(*len);
-		if (line == NULL)
-		{
-			perror("Fatal error.");
-			free(line);
+		new_buff[i] = ch_oldbuff[i];
+	}
+
+	/* Type cast new pointer back to void */
+	new_buff = (void *) new_buff;
+
+	free(old_buff);
+	return (new_buff);
+}
+
+/**
+ * _getline - function that get lines
+ * @line: NULL pointer which text will be located
+ *
+ * Return: number of characters read
+ */
+ssize_t _getline(char **line)
+{
+	char *buff;
+	int oldsize, bufsize = 64, pos = 0, num = 0;
+	ssize_t i = 0;
+
+	*line = NULL;
+
+	if (!line || !*line)
+	{
+		buff = malloc(sizeof(char) * bufsize);
+		if (!buff)
+			return (0);
+		fill_null(buff, bufsize);
+		*line = buff;
+	}
+
+
+	do {
+		num = read(STDIN_FILENO, buff + pos, 64);
+		if (num == -1 || !*buff)
 			return (-1);
-		}
-	}
-	(*line)[0] = '\0';
+		pos += num;
 
-	while (fgets(chunk, sizeof(chunk), fp) != NULL)
-	{
-		*len = _strlen(*line);
-		if (*len < sizeof(chunk))
+		if (num >= 64)
 		{
-			*len = sizeof(chunk) + 1;
-			*line = malloc(*len);
-			if (line == NULL)
-			{
-				perror("Fatal error.");
-				free(line);
-				return (-1);
-			}
+			oldsize = bufsize;
+			bufsize += 64;
+			buff = _realloc(buff, oldsize, bufsize);
+			if (!buff)
+				return (0);
+			*line = buff;
 		}
-		_strcat2(*line, chunk);
-		if ((*line)[_strlen(*line) - 1] == '\n')
-			return (_strlen(*line));
-	}
-	return (-1);
+	} while (num >= 64);
+
+	i = _strlen(buff);
+
+	return (i);
 }

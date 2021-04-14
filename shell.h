@@ -26,6 +26,7 @@ typedef struct builtins
 
 /*Built-in functions*/
 int new_exit(char **args);
+int _printenv(char **args);
 
 /*String Function*/
 int _strlen(char *s);
@@ -51,6 +52,6 @@ char *_strtok(char *str, char *delim);
 int *create_delim_dict(char *delim);
 void format_error(int *status, int count_err, char **args);
 void no_inter(builtins_t *builtin);
-ssize_t _getline(char **line, size_t *len, FILE *fp);
+ssize_t _getline(char **lineptr);
 
 #endif
