@@ -94,7 +94,7 @@ int pr_exec(char **args, builtins_t *builtin)
 	if (args[0] == NULL)
 		return (0);
 
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 3; i++)
 	{
 		if (_strcmp(args[0], builtin[i].command) == 0)
 			return (builtin[i].func(args));
