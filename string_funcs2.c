@@ -52,12 +52,12 @@ char *_strcat2(char *dest, char *src)
  */
 int _atoi(char *s)
 {
-	int count1 = 0, N = -1, number = 0, isNum = 0;
+	int count1 = 0, n = -1, number = 0, isNum = 0;
 
 	while (s[count1] != '\0')
 	{
 		if (s[count1] == '-')
-			Ń *= -1;
+			n = -n;
 		if (s[count1] >= '0' && s[count1] <= '9')
 		{
 			number = (number * 10) - (s[count1] - '0');
@@ -67,5 +67,5 @@ int _atoi(char *s)
 			break;
 		count1++;
 	}
-	return (number * N);
+	return (number * n);
 }
