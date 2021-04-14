@@ -7,18 +7,31 @@ _A shell is a user interface for access to an operating system’s services. Mos
 
 ## Files
 AUTHORS: Contains information about authors
+
 README.md: Contains information about this project
+
 shell.h: Header file, contains all prototypes for funcitons used
+
 builtins.c: File of function to exit the shell where it is currently running
+
 format_error.c: File of manage the rror and print a format error
+
 get_env.c: File of gets the environ variable
+
 get_line.c: File of function that get lines
+
 main.c: Main file
+
 new_strtok.c: File of function that extract tokens from strings
+
 new_realloc.c: File of reallocate the memory space
+
 signal.c: File of function of detected ctrl + c or ANSI C signal handling
+
 split_line.c: File of tokenizes a line with a delimiter
+
 string_funcs.c: Function file for working with shell files
+
 string_funcs2.c: Function file for working with shell files
 
 ## Installation
