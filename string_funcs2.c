@@ -57,7 +57,7 @@ int _atoi(char *s)
 	while (s[count1] != '\0')
 	{
 		if (s[count1] == '-')
-			j *= -1;
+			Ń *= -1;
 		if (s[count1] >= '0' && s[count1] <= '9')
 		{
 			number = (number * 10) - (s[count1] - '0');
