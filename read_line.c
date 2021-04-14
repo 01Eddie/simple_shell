@@ -8,8 +8,9 @@
 char *read_line(void)
 {
 	char *line = NULL;
+	size_t bufsize = 0;
 
-	if (_getline(&line) == EOF)
+	if (getline(&line, &bufsize, stdin) == EOF)
 	{
 		write(STDOUT_FILENO, "\n", 1);
 		free(line);

@@ -10,8 +10,9 @@ void no_inter(builtins_t *builtin)
 {
 	int status = 0, count_err = 0;
 	char *line = NULL, **args = NULL;
+	size_t bufsize = 0;
 
-	while (_getline(&line) != EOF)
+	while (getline(&line, &bufsize, stdin) != EOF)
 	{
 		count_err++;
 		args = split_line(line, " \t\r\n\a");
