@@ -32,8 +32,16 @@ void format_error(int *status, int count_err, char **args)
 		_puts("not found");
 		_puts("\n");
 		break;
-
-/*more cases*/
+	case 3:
+		print_error(count_err, args);
+		_puts("Illegal number");
+		if (args[1])
+		{
+			_puts(": ");
+			_puts(args[1]);
+			_puts("\n");
+		}
+		break;
 	default:
 		break;
 	}
