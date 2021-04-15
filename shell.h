@@ -43,7 +43,7 @@ void printint(int n);
 void _puts(char *s);
 int _putchar(const char c);
 
-char *_strcat2(char *dest, char *src);
+
 char **split_line(char *line, char *delim);
 char **re_alloc(char **ptr, int *size);
 int pr_exec(char **args, builtins_t *builtin);
