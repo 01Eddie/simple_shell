@@ -73,7 +73,7 @@ int pr_launch(char **args)
 		if (execve(args[0], args, environ) == -1)
 			perror("Fatal Error");
 		_free2(args, path);
-		exit(2);
+		exit(0);
 	}
 	else
 		wait(&status);
