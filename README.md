@@ -50,6 +50,10 @@ The build will create a file with hsh, then continue to run the following comman
 $ ./hsh
 $
 ```
+## Algorithm
+<p align="center">
+<img src="algorithm.jpeg" alt="My algorithm of shell"/>
+</p>
 
 ## Example
 ```bash
