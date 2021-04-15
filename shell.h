@@ -27,6 +27,7 @@ typedef struct builtins
 /*Built-in functions*/
 int new_exit(char **args);
 int _printenv(char **args);
+int _cd(char **args);
 
 /*String Function*/
 int _strlen(char *s);
@@ -42,7 +43,7 @@ void printint(int n);
 void _puts(char *s);
 int _putchar(const char c);
 
-char *_strcat2(char *dest, char *src);
+/*helper functions*/
 char **split_line(char *line, char *delim);
 char **re_alloc(char **ptr, int *size);
 int pr_exec(char **args, builtins_t *builtin);

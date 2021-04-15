@@ -13,6 +13,7 @@ int main(void)
 	builtins_t builtin[] = {
 		{"exit", new_exit},
 		{"env", _printenv},
+		{"cd", _cd},
 		{NULL, NULL}
 	};
 
