@@ -19,32 +19,6 @@ char *_memset(char *s, char b, unsigned int n)
 }
 
 /**
- * _strcat2 - function that concatenates two strings
- * @dest: first string
- * @src: second string to be concatenated
- *
- * Return: dest
- */
-char *_strcat2(char *dest, char *src)
-{
-	int count = 0;
-	int count2 = 0;
-
-	while (dest[count] != '\0')
-		count++;
-
-	while (count2 >= 0)
-	{
-		dest[count] = src[count2];
-		if (src[count2] == '\0')
-			break;
-		count++;
-		count2++;
-	}
-
-	return (dest);
-}
-/**
  * _atoi - function that convert a string to an integer
  * @s: Character string pointer
  *
