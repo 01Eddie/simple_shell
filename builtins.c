@@ -14,6 +14,7 @@ int new_exit(char **args)
 	{
 		free(args[0]);
 		free(args);
+		status = 2;
 		fflush(stdout);
 		exit(status);
 	}
