@@ -38,7 +38,7 @@ int check_existence(char *path)
 
 int pr_launch(char **args)
 {
-	int child_pid, status, existence, c, cur_path = 0;
+	int child_pid, status, existence, c; /*cur_path = 0;*/
 	char *env = 0, **path = 0, *path_command = 0, *command = 0;
 
 	child_pid = fork();
@@ -47,15 +47,14 @@ int pr_launch(char **args)
 	else if (child_pid == 0)
 	{
 		env = _getenv("PATH");
-		if (env && env[0] == ':')
-			cur_path = 1;
+		/*if (env && env[0] == ':') cur_path = 1;*/
 		path = split_line(env, ":");
 		for (c = 0; path[c]; c++)
 		{
 			command = _strcat("/", args[0]);
 			path_command = _strcat(path[c], command);
 			existence = check_existence(path_command);
-			if (existence != -1 && !cur_path)
+			if (existence != -1)
 			{
 				args[0] = path_command;
 				break;
