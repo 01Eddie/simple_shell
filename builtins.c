@@ -14,8 +14,9 @@ int new_exit(char **args)
 	{
 		free(args[0]);
 		free(args);
-		/*status = 2;*/
-		exit(2);
+		status = 2;
+		fflush(stdout);
+		exit(status);
 	}
 
 	for (i = 0; args[1][i] != '\0'; i++)
@@ -54,9 +55,9 @@ int _printenv(char **args)
  * @args: argument cd
  *
  * Return: 1 on success
- * trying function error
+ * TRYING FUNCTION ERROR
  **/
-/* int _cd(char **args)
+int _cd(char **args)
 {
 	char buff[1024], *cwd, *new_wd, *comp = "-", *old_pwd;
 	int chint = 0;
@@ -98,4 +99,3 @@ int _printenv(char **args)
 	setenv("PWD", new_wd, 1);
 	return (0);
 }
- */
