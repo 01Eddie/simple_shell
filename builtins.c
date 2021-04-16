@@ -55,8 +55,9 @@ int _printenv(char **args)
  * @args: argument cd
  *
  * Return: 1 on success
+ * trying function error
  **/
-int _cd(char **args)
+/* int _cd(char **args)
 {
 	char buff[1024], *cwd, *new_wd, *comp = "-", *old_pwd;
 	int chint = 0;
@@ -98,3 +99,4 @@ int _cd(char **args)
 	setenv("PWD", new_wd, 1);
 	return (0);
 }
+ */
