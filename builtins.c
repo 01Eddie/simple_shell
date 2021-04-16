@@ -14,9 +14,8 @@ int new_exit(char **args)
 	{
 		free(args[0]);
 		free(args);
-		status = 2;
-		fflush(stdout);
-		exit(status);
+		/*status = 2;*/
+		exit(2);
 	}
 
 	for (i = 0; args[1][i] != '\0'; i++)
